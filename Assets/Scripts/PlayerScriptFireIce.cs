@@ -22,6 +22,8 @@ public class PlayerScriptFireIce : MonoBehaviourPun, IPunObservable
     public bool isFire = true;
     public bool isIce = false;
 
+    public bool reachedExit = false;
+
     [Header("Network Sync")]
     private Vector3 networkPosition;
     private Quaternion networkRotation;
@@ -70,12 +72,19 @@ public class PlayerScriptFireIce : MonoBehaviourPun, IPunObservable
         }
     }
 
+
+    //checks all possible collisions
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //simple ground check
         if (collision.contacts[0].normal.y > 0.5f)
         {
             isGrounded = true;
+        }
+
+        if (collision.gameObject.tag == "Exit")
+        {
+            reachedExit = true;
         }
     }
 

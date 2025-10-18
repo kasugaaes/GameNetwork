@@ -12,6 +12,7 @@ TagManager:
   - Wind
   - Transformer
   - Activator
+  - Box
   layers:
   - Default
   - TransparentFX

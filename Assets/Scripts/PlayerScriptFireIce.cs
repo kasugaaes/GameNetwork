@@ -24,6 +24,8 @@ public class PlayerScriptFireIce : MonoBehaviourPun, IPunObservable
 
     public bool reachedExit = false;
 
+    private SpriteRenderer spriteRenderer;
+
     [Header("Interaction Settings")]
     public Transform interactPoint; //this is referenced to an empty child in front of the player
     public float interactRange = 1f;
@@ -37,6 +39,7 @@ public class PlayerScriptFireIce : MonoBehaviourPun, IPunObservable
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         networkPosition = transform.position;
         networkRotation = transform.rotation;
@@ -128,12 +131,23 @@ public class PlayerScriptFireIce : MonoBehaviourPun, IPunObservable
             {
                 isFire = false;
                 isIce = true;
+                spriteRenderer.color = Color.cyan;
             }
             else if (isIce == true)
             {
                 isIce = false;
                 isFire = true;
+                spriteRenderer.color = Color.red;
             }
+        }
+
+        if (collision.gameObject.tag == "Fire")
+        {
+            if (isFire == false)
+            {
+                this.transform.position = spawnPoint.position;
+            }
+            
         }
     }
 

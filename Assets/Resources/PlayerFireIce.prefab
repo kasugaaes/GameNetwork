@@ -215,6 +215,7 @@ MonoBehaviour:
   isFire: 1
   isIce: 0
   reachedExit: 0
+  mainMenuScene: Main Menu
   interactPoint: {fileID: 726884162820625362}
   interactRange: 1
 --- !u!1 &9081442143149506696

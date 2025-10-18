@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using Photon.Pun;
 using Photon.Realtime;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerScriptFireIce : MonoBehaviourPun, IPunObservable
@@ -23,6 +24,7 @@ public class PlayerScriptFireIce : MonoBehaviourPun, IPunObservable
     public bool isIce = false;
 
     public bool reachedExit = false;
+    public string mainMenuScene;
 
     private SpriteRenderer spriteRenderer;
 
@@ -39,6 +41,8 @@ public class PlayerScriptFireIce : MonoBehaviourPun, IPunObservable
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        GameObject spawner = GameObject.Find("Point 1");
+        spawnPoint = spawner.GetComponent<Transform>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         networkPosition = transform.position;
@@ -78,6 +82,12 @@ public class PlayerScriptFireIce : MonoBehaviourPun, IPunObservable
         {
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             isGrounded = false;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            PhotonNetwork.LeaveRoom(gameObject);
+            SceneManager.LoadScene(mainMenuScene);
         }
     }
 

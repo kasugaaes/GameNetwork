@@ -13,6 +13,7 @@ TagManager:
   - Transformer
   - Activator
   - Box
+  - Lightning
   layers:
   - Default
   - TransparentFX

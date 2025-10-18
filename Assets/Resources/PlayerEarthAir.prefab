@@ -114,7 +114,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.9622642, g: 0.69351405, b: 0.27233893, a: 1}
+  m_Color: {r: 1, g: 0.92113835, b: 0.16037738, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -186,7 +186,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &843968730213789966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243,8 +243,9 @@ MonoBehaviour:
   jumpForce: 7
   isGrounded: 0
   spawnPoint: {fileID: 0}
-  isEarth: 0
+  isEarth: 1
   isAir: 0
   reachedExit: 0
+  mainMenuScene: Main Menu
   interactPoint: {fileID: 0}
   interactRange: 1

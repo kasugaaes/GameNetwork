@@ -149,6 +149,20 @@ public class PlayerScriptFireIce : MonoBehaviourPun, IPunObservable
             }
             
         }
+
+        if (collision.gameObject.tag == "Ice")
+        {
+            if (isIce == false)
+            {
+                this.transform.position = spawnPoint.position;
+            }
+
+        }
+
+        if (collision.gameObject.tag == "Hazard")
+        {
+            this.transform.position = spawnPoint.position;
+        }
     }
 
     // 🔹 Photon built-in sync method

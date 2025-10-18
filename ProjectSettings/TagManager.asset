@@ -6,6 +6,11 @@ TagManager:
   tags:
   - Bullet
   - Hazard
+  - Exit
+  - Fire
+  - Ice
+  - Wind
+  - Transformer
   layers:
   - Default
   - TransparentFX

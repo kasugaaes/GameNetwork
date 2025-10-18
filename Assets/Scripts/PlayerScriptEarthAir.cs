@@ -24,6 +24,11 @@ public class PlayerScriptEarthAir : MonoBehaviourPun, IPunObservable
 
     public bool reachedExit = false;
 
+    [Header("Interaction Settings")]
+    public Transform interactPoint; //this is referenced to an empty child in front of the player
+    public float interactRange = 1f;
+    private InteractableObject grabbedObject = null;
+
     [Header("Network Sync")]
     private Vector3 networkPosition;
     private Quaternion networkRotation;
@@ -43,6 +48,7 @@ public class PlayerScriptEarthAir : MonoBehaviourPun, IPunObservable
         if (photonView.IsMine)
         {
             HandleMovement();
+            HandleInteraction();
         }
         else
         {
@@ -72,6 +78,35 @@ public class PlayerScriptEarthAir : MonoBehaviourPun, IPunObservable
         }
     }
 
+    void HandleInteraction()
+    {
+        if (Input.GetKeyDown(KeyCode.E)) //this is the key for grab or release
+        {
+            if (grabbedObject == null)
+            {
+                Collider2D hit = Physics2D.OverlapCircle(interactPoint.position, interactRange);
+                if (hit != null && hit.GetComponent<InteractableObject>())
+                {
+                    grabbedObject = hit.GetComponent<InteractableObject>();
+                    grabbedObject.photonView.RPC("RPC_SetGrabbed", RpcTarget.AllBuffered, photonView.ViewID);
+                }
+            }
+            else
+            {
+                grabbedObject.photonView.RPC("RPC_Release", RpcTarget.AllBuffered);
+                grabbedObject = null;
+            }
+        }
+
+        if (grabbedObject != null)
+        {
+            grabbedObject.transform.position = Vector3.Lerp(
+                grabbedObject.transform.position,
+                interactPoint.position,
+                Time.deltaTime * 10f);
+        }
+    }
+
 
 
     //checks all possible collisions
@@ -86,6 +121,20 @@ public class PlayerScriptEarthAir : MonoBehaviourPun, IPunObservable
         if (collision.gameObject.tag == "Exit")
         {
             reachedExit = true;
+        }
+
+        if (collision.gameObject.tag == "Transformer")
+        {
+            if (isAir == true)
+            {
+                isAir = false;
+                isEarth = true;
+            }
+            else if (isEarth == true)
+            {
+                isAir = false;
+                isEarth = true;
+            }
         }
     }
 

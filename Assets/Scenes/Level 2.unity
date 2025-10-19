@@ -1780,6 +1780,10 @@ PrefabInstance:
       propertyPath: ifLevel2
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2184198097981752313, guid: fe0c77352f171b645b3b798adf3693fb, type: 3}
+      propertyPath: isNewLevel
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2313611660602986971, guid: fe0c77352f171b645b3b798adf3693fb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.93

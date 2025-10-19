@@ -94,7 +94,7 @@ public class Spawner : MonoBehaviourPunCallbacks
             // Store a reference so Photon knows this player exists
             PhotonNetwork.LocalPlayer.TagObject = newPlayer;
         }
-        else
+        else if(spawnLocation == spawnPoints[0])
         {
             GameObject newPlayer = PhotonNetwork.Instantiate(playerPrefabEarthAir.name, spawnLocation.position, spawnLocation.rotation);
             // Store a reference so Photon knows this player exists

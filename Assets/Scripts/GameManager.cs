@@ -37,10 +37,10 @@ public class GameManager : MonoBehaviourPunCallbacks
         CheckCompletion();
     }
 
-    /*public override void OnPlayerEnteredRoom(Player newPlayer)
+    public override void OnPlayerEnteredRoom(Player newPlayer)
     {
-        PhotonNetwork.LoadLevel(currentLevel);
-    }*/
+        //PhotonNetwork.LoadLevel(currentLevel);
+    }
 
     public void CheckCompletion()
     {

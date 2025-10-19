@@ -12,6 +12,7 @@ public class Spawner : MonoBehaviourPunCallbacks
     public GameObject playerPrefabFireIce; // must be in Resources folder
     public GameObject playerPrefabEarthAir;
     private int playerId;
+    public bool ifLevel2;
 
     [Header("Spawn Points")]
     public Transform[] spawnPoints;
@@ -19,6 +20,12 @@ public class Spawner : MonoBehaviourPunCallbacks
     //this is for the owner of the server (player who created the game)
     public void Start()
     {
+        if(ifLevel2 == true)
+        {
+            StartCoroutine(DelaySpawn());
+        }
+
+
         if (PhotonNetwork.IsConnected && PhotonNetwork.InRoom)
         {
             StartCoroutine(DelaySpawn());

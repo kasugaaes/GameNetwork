@@ -23,6 +23,7 @@ public class Spawner : MonoBehaviourPunCallbacks
         if(ifLevel2 == true)
         {
             StartCoroutine(DelaySpawn());
+            StartCoroutine(DelaySpawn());
         }
 
 

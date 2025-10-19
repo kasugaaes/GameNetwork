@@ -41,7 +41,7 @@ public class PlayerScriptFireIce : MonoBehaviourPun, IPunObservable
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        GameObject spawner = GameObject.Find("Point 1");
+        GameObject spawner = GameObject.Find("Point 2");
         spawnPoint = spawner.GetComponent<Transform>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();

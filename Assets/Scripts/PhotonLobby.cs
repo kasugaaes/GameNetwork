@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.Windows;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.InputSystem;
 
 public class PhotonLobby : MonoBehaviourPunCallbacks
 {
@@ -32,6 +33,14 @@ public class PhotonLobby : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.ConnectUsingSettings(); //Connects to server
         offlineButton.gameObject.SetActive(true);
+    }
+
+    private void Update()
+    {
+        if(UnityEngine.Input.GetKey(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 
     public override void OnConnectedToMaster()

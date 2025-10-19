@@ -240,12 +240,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  jumpForce: 7
+  jumpForce: 8
   isGrounded: 0
   spawnPoint: {fileID: 0}
   isEarth: 1
   isAir: 0
   reachedExit: 0
   mainMenuScene: Main Menu
-  interactPoint: {fileID: 0}
+  interactPoint: {fileID: 7783276368815342124}
   interactRange: 1

@@ -47,6 +47,7 @@ public class PlayerScriptFireIce : MonoBehaviourPun, IPunObservable
         rb = GetComponent<Rigidbody2D>();
         networkPosition = transform.position;
         networkRotation = transform.rotation;
+        TurnToFire();
     }
 
     // Update is called once per frame
@@ -139,15 +140,11 @@ public class PlayerScriptFireIce : MonoBehaviourPun, IPunObservable
         {
             if(isFire == true)
             {
-                isFire = false;
-                isIce = true;
-                spriteRenderer.color = Color.cyan;
+                TurnToIce();
             }
             else if (isIce == true)
             {
-                isIce = false;
-                isFire = true;
-                spriteRenderer.color = Color.red;
+                TurnToFire();
             }
         }
 
@@ -173,6 +170,20 @@ public class PlayerScriptFireIce : MonoBehaviourPun, IPunObservable
         {
             this.transform.position = spawnPoint.position;
         }
+    }
+
+    public void TurnToIce()
+    {
+        isFire = false;
+        isIce = true;
+        spriteRenderer.color = Color.cyan;
+    }
+
+    public void TurnToFire()
+    {
+        isIce = false;
+        isFire = true;
+        spriteRenderer.color = Color.red;
     }
 
     // 🔹 Photon built-in sync method

@@ -81,8 +81,7 @@ public class Spawner : MonoBehaviourPunCallbacks
         }
         else
         {
-            int randomIndex = Random.Range(0, spawnPoints.Length);
-            spawnLocation = spawnPoints[randomIndex];
+            spawnLocation = spawnPoints[0];
         }
 
         // The prefab MUST be in a folder called "Resources"

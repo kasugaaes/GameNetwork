@@ -6,17 +6,26 @@ using UnityEngine.Windows;
 using System.Collections;
 using System.Collections.Generic;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviourPunCallbacks
 {
     [Header("Checked if Finish")]
     public bool player1Finish = false;
     public bool player2Finish = false;
 
+    public string currentLevel;
     public string levelToLoad;
 
     private IEnumerator levelLoadDelay;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    void Awake()
+    {
+        // Make sure this applies before joining any room
+        PhotonNetwork.AutomaticallySyncScene = true;
+    }
+
+
     void Start()
     {
         levelLoadDelay = waitToGoNextLevel(2.0f);
@@ -26,6 +35,11 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         CheckCompletion();
+    }
+
+    public override void OnPlayerEnteredRoom(Player newPlayer)
+    {
+        PhotonNetwork.LoadLevel(currentLevel);
     }
 
     public void CheckCompletion()
@@ -41,4 +55,6 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(delay);
         PhotonNetwork.LoadLevel(levelToLoad);
     }
+
+
 }

@@ -5221,6 +5221,10 @@ PrefabInstance:
       propertyPath: levelToLoad
       value: Win
       objectReference: {fileID: 0}
+    - target: {fileID: 6424645760738252128, guid: 86b226a8eb4b2f84fb8ab8c6ef8c3444, type: 3}
+      propertyPath: currentLevel
+      value: Level 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6829224298588658232, guid: 86b226a8eb4b2f84fb8ab8c6ef8c3444, type: 3}
       propertyPath: m_LocalScale.y
       value: 0.28125

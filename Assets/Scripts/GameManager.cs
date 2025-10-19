@@ -1,10 +1,11 @@
+using System.Collections;
+using System.Collections.Generic;
 using Photon.Pun;
+using Photon.Pun.Demo.PunBasics;
 using Photon.Realtime;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Windows;
-using System.Collections;
-using System.Collections.Generic;
 
 public class GameManager : MonoBehaviourPunCallbacks
 {
@@ -14,6 +15,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     public string currentLevel;
     public string levelToLoad;
+    private int playerId;
 
     private IEnumerator levelLoadDelay;
 
@@ -21,6 +23,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     void Awake()
     {
+        playerId = PhotonNetwork.LocalPlayer.ActorNumber;
         // Make sure this applies before joining any room
         PhotonNetwork.AutomaticallySyncScene = true;
     }
@@ -45,7 +48,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     public void CheckCompletion()
     {
-        if (player1Finish==true && player2Finish == true)
+        if (player1Finish==true && player2Finish == true && playerId == 1)
         {
             StartCoroutine(levelLoadDelay);
         }

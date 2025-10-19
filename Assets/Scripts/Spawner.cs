@@ -58,11 +58,11 @@ public class Spawner : MonoBehaviourPunCallbacks
         }
 
         // Prevent double-spawning if the player already exists
-        /*if (PhotonNetwork.LocalPlayer.TagObject != null)
+        if (PhotonNetwork.LocalPlayer.TagObject != null)
         {
             Debug.Log("Player already spawned, skipping.");
             return;
-        }*/
+        }
 
         playerId = PhotonNetwork.LocalPlayer.ActorNumber;
         Debug.Log("playerID: " + playerId);
@@ -79,8 +79,7 @@ public class Spawner : MonoBehaviourPunCallbacks
         }
         else
         {
-            int randomIndex = Random.Range(0, spawnPoints.Length);
-            spawnLocation = spawnPoints[randomIndex];
+            spawnLocation = spawnPoints[0];
         }
 
         // The prefab MUST be in a folder called "Resources"

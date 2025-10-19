@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     void Start()
     {
+        //set up coroutine
         levelLoadDelay = waitToGoNextLevel(2.0f);
     }
 

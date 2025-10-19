@@ -14,10 +14,12 @@ public class GameManager : MonoBehaviour
 
     public string levelToLoad;
 
+    private IEnumerator levelLoadDelay;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        levelLoadDelay = waitToGoNextLevel(2.0f);
     }
 
     // Update is called once per frame
@@ -30,7 +32,13 @@ public class GameManager : MonoBehaviour
     {
         if (player1Finish==true && player2Finish == true)
         {
-            PhotonNetwork.LoadLevel(levelToLoad);
+            StartCoroutine(levelLoadDelay);
         }
+    }
+
+    private IEnumerator waitToGoNextLevel(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        PhotonNetwork.LoadLevel(levelToLoad);
     }
 }

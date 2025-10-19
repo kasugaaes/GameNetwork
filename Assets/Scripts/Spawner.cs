@@ -45,6 +45,8 @@ public class Spawner : MonoBehaviourPunCallbacks
 
     void SpawnPlayer()
     {
+        
+
         if (playerPrefabFireIce == null && playerPrefabEarthAir == null)
         {
             Debug.LogError("Player prefab is missing in inspector!");
